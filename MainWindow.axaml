@@ -1,0 +1,205 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="VirtualMan.MainWindow"
+        Title="BioSim: Whole-Body Physiological Model v3.2"
+        Width="1360" Height="800"
+        Background="#141923" Foreground="#E1E4E8">
+
+  <Grid RowDefinitions="Auto, *, Auto">
+
+    <!-- TOP MENUBAR & SYSTEM STATUS -->
+    <Border Grid.Row="0" Background="#1A202C" Padding="12,6" BorderBrush="#2D3748" BorderThickness="0,0,0,1">
+      <Grid ColumnDefinitions="Auto, *, Auto">
+        <StackPanel Orientation="Horizontal" Spacing="18" VerticalAlignment="Center">
+          <TextBlock Text="FILE" FontSize="11" FontWeight="Bold" Foreground="#A0AEC0"/>
+          <TextBlock Text="VIEW" FontSize="11" FontWeight="Bold" Foreground="#A0AEC0"/>
+          <TextBlock Text="SIMULATION" FontSize="11" FontWeight="Bold" Foreground="#A0AEC0"/>
+          <TextBlock Text="FAULT MODEL" FontSize="11" FontWeight="Bold" Foreground="#A0AEC0"/>
+          <TextBlock Text="ANALYTICS" FontSize="11" FontWeight="Bold" Foreground="#A0AEC0"/>
+          <TextBlock Text="HELP" FontSize="11" FontWeight="Bold" Foreground="#A0AEC0"/>
+        </StackPanel>
+        <TextBlock Grid.Column="1" x:Name="TopStatusBanner" Text="Status: SYSTEM NOMINAL / ACTIVE" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#48BB78" VerticalAlignment="Center"/>
+        <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="15" VerticalAlignment="Center">
+          <TextBlock Text="SESSION: SECURE" FontSize="11" Foreground="#CBD5E0"/>
+          <TextBlock Text="OCT 18, 2026 | 12:45" FontSize="11" Foreground="#8B949E"/>
+        </StackPanel>
+      </Grid>
+    </Border>
+
+    <!-- MAIN 4-COLUMN WORKSPACE -->
+    <Grid Grid.Row="1" ColumnDefinitions="290, 190, *, 360" Margin="10">
+
+      <!-- COLUMN 1: MODULAR SYSTEM STATUS CARDS -->
+      <Border Grid.Column="0" Background="#1B222D" CornerRadius="6" Padding="10" Margin="0,0,8,0" BorderBrush="#2D3748" BorderThickness="1">
+        <Grid RowDefinitions="Auto, *">
+          <TextBlock Grid.Row="0" Text="MODULAR SYSTEM STATUS" FontSize="12" FontWeight="Bold" Foreground="#E1E4E8" Margin="0,0,0,10"/>
+          <ScrollViewer Grid.Row="1">
+            <StackPanel x:Name="SystemCardsContainer" Spacing="8"/>
+          </ScrollViewer>
+        </Grid>
+      </Border>
+
+      <!-- COLUMN 2: SYSTEM LAYERS SELECTOR -->
+      <Border Grid.Column="1" Background="#1B222D" CornerRadius="6" Padding="10" Margin="0,0,8,0" BorderBrush="#2D3748" BorderThickness="1">
+        <StackPanel Spacing="10">
+          <TextBlock Text="SYSTEM LAYERS" FontSize="12" FontWeight="Bold" Foreground="#E1E4E8"/>
+          <Border Background="#252D3B" CornerRadius="4" Padding="8">
+            <StackPanel Spacing="8">
+              <CheckBox Content="Cardiovascular" IsChecked="True" Foreground="White" FontSize="11"/>
+              <CheckBox Content="Respiratory" IsChecked="True" Foreground="White" FontSize="11"/>
+              <CheckBox Content="Digestive" IsChecked="True" Foreground="White" FontSize="11"/>
+              <CheckBox Content="Excretory" IsChecked="True" Foreground="White" FontSize="11"/>
+            </StackPanel>
+          </Border>
+          <TextBlock Text="Parameters" FontSize="12" FontWeight="Bold" Foreground="#E1E4E8" Margin="0,15,0,5"/>
+          <ComboBox Width="165" SelectedIndex="0">
+            <ComboBoxItem Content="Select Parameter"/>
+            <ComboBoxItem Content="Perfusion Rate"/>
+            <ComboBoxItem Content="Metabolic Flux"/>
+          </ComboBox>
+          <TextBlock Text="Rate Payne" FontSize="11" Foreground="#A0AEC0" Margin="0,5,0,0"/>
+          <ComboBox Width="165" SelectedIndex="0">
+            <ComboBoxItem Content="Normal"/>
+            <ComboBoxItem Content="Elevated"/>
+            <ComboBoxItem Content="Suppressed"/>
+          </ComboBox>
+          <TextBlock Text="GFR Motility" FontSize="11" Foreground="#A0AEC0" Margin="0,5,0,0"/>
+          <ComboBox Width="165" SelectedIndex="0">
+            <ComboBoxItem Content="Normal"/>
+            <ComboBoxItem Content="Impaired"/>
+          </ComboBox>
+        </StackPanel>
+      </Border>
+
+      <!-- COLUMN 3: BODY MAP + CALLOUTS -->
+      <Border Grid.Column="2" Background="#1B222D" CornerRadius="6" Padding="10" Margin="0,0,8,0" BorderBrush="#2D3748" BorderThickness="1">
+        <!-- Viewbox scales the whole design canvas uniformly, so the body and every
+             leader line stay aligned and centered at any window size -->
+        <Viewbox Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center">
+          <Canvas x:Name="AvatarCanvas" Width="640" Height="610">
+
+            <!-- BODY IMAGE (272x642 source, aspect kept: 237 x 560, centered at x=320) -->
+            <Image Canvas.Left="201" Canvas.Top="20" Width="237" Height="560"
+                   Stretch="Uniform" Source="avares://VirtualMan/Assets/body_only.png"/>
+
+            <!-- LEADER LINES (drawn above the image, below the buttons) -->
+            <!-- right-side callouts -->
+            <Polyline IsHitTestVisible="False" Stroke="#FC8181" StrokeThickness="1.3" Points="480,78 460,78 331,165"/>
+            <Polyline IsHitTestVisible="False" Stroke="#63B3ED" StrokeThickness="1.3" Points="480,174 352,174"/>
+            <Polyline IsHitTestVisible="False" Stroke="#68D391" StrokeThickness="1.3" Points="480,270 460,270 340,215"/>
+            <Polyline IsHitTestVisible="False" Stroke="#B794F4" StrokeThickness="1.3" Points="480,377 460,377 341,284"/>
+            <!-- left-side callouts -->
+            <Polyline IsHitTestVisible="False" Stroke="#A0AEC0" StrokeThickness="1.3" Points="120,74 299,74"/>
+            <Polyline IsHitTestVisible="False" Stroke="#48BB78" StrokeThickness="1.3" Points="120,103 323,103"/>
+            <Polyline IsHitTestVisible="False" Stroke="#D69E2E" StrokeThickness="1.3" Points="120,205 332,215"/>
+            <Polyline IsHitTestVisible="False" Stroke="#ED8936" StrokeThickness="1.3" Points="120,245 323,228"/>
+
+            <!-- TARGET DOTS on the organs (8x8, centered on the line end) -->
+            <Ellipse IsHitTestVisible="False" Width="8" Height="8" Fill="White" Canvas.Left="327" Canvas.Top="161"/>
+            <Ellipse IsHitTestVisible="False" Width="8" Height="8" Fill="White" Canvas.Left="348" Canvas.Top="170"/>
+            <Ellipse IsHitTestVisible="False" Width="8" Height="8" Fill="White" Canvas.Left="336" Canvas.Top="211"/>
+            <Ellipse IsHitTestVisible="False" Width="8" Height="8" Fill="White" Canvas.Left="337" Canvas.Top="280"/>
+            <Ellipse IsHitTestVisible="False" Width="8" Height="8" Fill="White" Canvas.Left="295" Canvas.Top="70"/>
+            <Ellipse IsHitTestVisible="False" Width="8" Height="8" Fill="White" Canvas.Left="319" Canvas.Top="99"/>
+            <Ellipse IsHitTestVisible="False" Width="8" Height="8" Fill="White" Canvas.Left="328" Canvas.Top="211"/>
+            <Ellipse IsHitTestVisible="False" Width="8" Height="8" Fill="White" Canvas.Left="319" Canvas.Top="224"/>
+
+            <!-- RIGHT-SIDE ORGAN CALLOUT PANELS (centre of each button = end of its line) -->
+            <Button x:Name="BtnHeart" Content="HEART [96%]" Click="OnHeartClicked"
+                    Canvas.Left="480" Canvas.Top="58" Width="150" Height="40"
+                    Background="#2A1F26" BorderBrush="#FC8181" BorderThickness="1" CornerRadius="4"
+                    Foreground="#FC8181" FontWeight="Bold" FontSize="11"
+                    HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="10,0"/>
+            <Button x:Name="BtnLungs" Content="LUNGS [97%]" Click="OnLungsClicked"
+                    Canvas.Left="480" Canvas.Top="154" Width="150" Height="40"
+                    Background="#1A2A3D" BorderBrush="#63B3ED" BorderThickness="1" CornerRadius="4"
+                    Foreground="#63B3ED" FontWeight="Bold" FontSize="11"
+                    HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="10,0"/>
+            <Button x:Name="BtnLiver" Content="LIVER [92%]" Click="OnLiverClicked"
+                    Canvas.Left="480" Canvas.Top="250" Width="150" Height="40"
+                    Background="#1D2F2A" BorderBrush="#68D391" BorderThickness="1" CornerRadius="4"
+                    Foreground="#68D391" FontWeight="Bold" FontSize="11"
+                    HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="10,0"/>
+            <Button x:Name="BtnKidneys" Content="KIDNEYS [89%]" Click="OnKidneysClicked"
+                    Canvas.Left="480" Canvas.Top="357" Width="150" Height="40"
+                    Background="#2A2340" BorderBrush="#B794F4" BorderThickness="1" CornerRadius="4"
+                    Foreground="#B794F4" FontWeight="Bold" FontSize="11"
+                    HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="10,0"/>
+
+            <!-- LEFT-SIDE CALLOUT BUTTONS -->
+            <Button x:Name="BtnEar" Content="Ear" Click="OnEarClicked"
+                    Canvas.Left="20" Canvas.Top="61" Width="100" Height="26"
+                    Background="#4A5568" Foreground="White" FontWeight="Bold" FontSize="10"
+                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Button x:Name="BtnBrainstem" Content="BRAINSTEM" Click="OnBrainstemClicked"
+                    Canvas.Left="20" Canvas.Top="90" Width="100" Height="26"
+                    Background="#22543D" Foreground="#48BB78" FontWeight="Bold" FontSize="10"
+                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Button x:Name="BtnStomach" Content="Stomach" Click="OnStomachClicked"
+                    Canvas.Left="20" Canvas.Top="192" Width="100" Height="26"
+                    Background="#D69E2E" Foreground="Black" FontWeight="Bold" FontSize="10"
+                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Button x:Name="BtnPancreas" Content="Pancreas" Click="OnPancreasClicked"
+                    Canvas.Left="20" Canvas.Top="232" Width="100" Height="26"
+                    Background="#ED8936" Foreground="Black" FontWeight="Bold" FontSize="10"
+                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+            <!-- Gait State Readout -->
+            <TextBlock x:Name="AvatarGaitText" Canvas.Left="20" Canvas.Top="588"
+                       Text="Gait State: Normal Nominal Gait" Foreground="#CBD5E0" FontSize="11" FontWeight="Bold"/>
+          </Canvas>
+        </Viewbox>
+      </Border>
+
+      <!-- COLUMN 4: TELEMETRY LOGS & ECG WAVEFORM -->
+      <Grid Grid.Column="3" RowDefinitions="*, 150">
+
+        <!-- Live Fault-Injection & Telemetry Log -->
+        <Border Grid.Row="0" Background="#1B222D" CornerRadius="6" Padding="10" Margin="0,0,0,8" BorderBrush="#2D3748" BorderThickness="1">
+          <Grid RowDefinitions="Auto, Auto, *">
+            <TextBlock Grid.Row="0" Text="FAULT-INJECTION &amp; TELEMETRY LOG" FontSize="12" FontWeight="Bold" Foreground="#E1E4E8" Margin="0,0,0,8"/>
+            <TextBox Grid.Row="1" Watermark="Filter..." Height="28" Margin="0,0,0,8" Background="#141923" Foreground="White" FontSize="11"/>
+            <ScrollViewer Grid.Row="2">
+              <StackPanel x:Name="LogContainer" Spacing="4"/>
+            </ScrollViewer>
+          </Grid>
+        </Border>
+
+        <!-- Real-Time ECG (Lead II) Monitor -->
+        <Border Grid.Row="1" Background="#1B222D" CornerRadius="6" Padding="10" BorderBrush="#2D3748" BorderThickness="1">
+          <StackPanel Spacing="4">
+            <TextBlock Text="REAL-TIME ECG (Lead II)" FontSize="11" FontWeight="Bold" Foreground="#E1E4E8"/>
+            <Canvas Height="95" Background="#141923">
+              <Path Data="M 0,45 L 35,45 L 45,15 L 55,75 L 68,30 L 80,45 L 130,45 L 140,20 L 150,70 L 160,35 L 175,45 L 230,45 L 240,15 L 250,75 L 260,30 L 275,45 L 340,45"
+                    Stroke="#48BB78" StrokeThickness="2"/>
+            </Canvas>
+          </StackPanel>
+        </Border>
+
+      </Grid>
+    </Grid>
+
+    <!-- BOTTOM PLAYBACK & TIMELINE BAR -->
+    <Border Grid.Row="2" Background="#1A202C" Padding="12,8" BorderBrush="#2D3748" BorderThickness="0,1,0,0">
+      <Grid ColumnDefinitions="Auto, Auto, Auto, Auto, *, Auto">
+        <Button Grid.Column="0" Content="▶ PLAY" Click="OnTickClicked" Background="#2B6CB0" Foreground="White" FontWeight="Bold" FontSize="11" Padding="12,6" Margin="0,0,6,0"/>
+        <Button Grid.Column="1" Content="⏸ PAUSE" Background="#2D3748" Foreground="White" FontWeight="Bold" FontSize="11" Padding="12,6" Margin="0,0,6,0"/>
+        <Button Grid.Column="2" Content="⏭ STEP" Click="OnTickClicked" Background="#2D3748" Foreground="White" FontWeight="Bold" FontSize="11" Padding="12,6" Margin="0,0,6,0"/>
+        <Button Grid.Column="3" Content="⟲ RESET" Click="OnRestoreClicked" Background="#C53030" Foreground="White" FontWeight="Bold" FontSize="11" Padding="12,6" Margin="0,0,15,0"/>
+
+        <StackPanel Grid.Column="4" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+          <TextBlock Text="TIME: 00:03:45" FontSize="11" FontWeight="Bold" Foreground="#A0AEC0"/>
+          <Slider Width="220" Value="65" Maximum="100" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="5" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+          <TextBlock Text="SIMULATION SPEED" FontSize="11" Foreground="#A0AEC0"/>
+          <Border Background="#2D3748" CornerRadius="3" Padding="6,2">
+            <TextBlock Text="1x" FontSize="11" FontWeight="Bold" Foreground="White"/>
+          </Border>
+        </StackPanel>
+      </Grid>
+    </Border>
+
+  </Grid>
+</Window>
