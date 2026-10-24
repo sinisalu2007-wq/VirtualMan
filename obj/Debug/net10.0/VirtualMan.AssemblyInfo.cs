@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VirtualMan")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+695752b3bbb7a1e951db9db511fb17f1e93299b0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9fc6b73ce91bf4b688da72ceb9840b095670d39")]
 [assembly: System.Reflection.AssemblyProductAttribute("VirtualMan")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VirtualMan")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,9 +1,11 @@
 /home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/VirtualMan.csproj.AssemblyReference.cache
 /home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/Avalonia/Resources.Inputs.cache
+/home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/Avalonia/resources
 /home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/VirtualMan.GeneratedMSBuildEditorConfig.editorconfig
 /home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/VirtualMan.AssemblyInfoInputs.cache
 /home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/VirtualMan.AssemblyInfo.cs
 /home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/VirtualMan.csproj.CoreCompileInputs.cache
+/home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/VirtualMan.sourcelink.json
 /home/salu/RiderProjects/VirtualMan/VirtualMan/bin/Debug/net10.0/VirtualMan
 /home/salu/RiderProjects/VirtualMan/VirtualMan/bin/Debug/net10.0/VirtualMan.deps.json
 /home/salu/RiderProjects/VirtualMan/VirtualMan/bin/Debug/net10.0/VirtualMan.runtimeconfig.json
@@ -53,11 +55,9 @@
 /home/salu/RiderProjects/VirtualMan/VirtualMan/bin/Debug/net10.0/runtimes/win-arm64/native/libSkiaSharp.dll
 /home/salu/RiderProjects/VirtualMan/VirtualMan/bin/Debug/net10.0/runtimes/win-x64/native/libSkiaSharp.dll
 /home/salu/RiderProjects/VirtualMan/VirtualMan/bin/Debug/net10.0/runtimes/win-x86/native/libSkiaSharp.dll
-/home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/VirtualMan.csproj.Up2Date
-/home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/VirtualMan.genruntimeconfig.cache
-/home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/ref/VirtualMan.dll
-/home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/Avalonia/resources
 /home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/Avalonia/VirtualMan.dll
 /home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/Avalonia/VirtualMan.pdb
 /home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/refint/Avalonia/VirtualMan.dll
-/home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/VirtualMan.sourcelink.json
+/home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/VirtualMan.csproj.Up2Date
+/home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/VirtualMan.genruntimeconfig.cache
+/home/salu/RiderProjects/VirtualMan/VirtualMan/obj/Debug/net10.0/ref/VirtualMan.dll

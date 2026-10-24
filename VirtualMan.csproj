@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -18,6 +18,15 @@
   <ItemGroup>
     <None Remove="Assets\body_only.png" />
     <AvaloniaResource Include="Assets\body_only.png" />
+  </ItemGroup>
+
+  <!-- Old prototype code that the new BioSim engine replaces. Excluded from the build, not deleted. -->
+  <ItemGroup>
+    <Compile Remove="Engine.cs" />
+    <Compile Remove="VirtualPerson.cs" />
+    <Compile Remove="Core\**" />
+    <Compile Remove="Interfaces\**" />
+    <Compile Remove="Systems\**" />
   </ItemGroup>
 
 </Project>
